@@ -1,3 +1,4 @@
+
 #contact_modal {
     display: none;
 }
@@ -6,6 +7,30 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+.photograph-header h1 {
+    color: #D3573C;
+    font-size: 3em;
+}
+.photograph-header p:nth-of-type(1){
+    font-size: 1.5em;
+    color: #D3573C;
+}
+.photograph-header img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+.photograph-header div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .contact_button {
