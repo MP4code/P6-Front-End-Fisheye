@@ -32,7 +32,45 @@
     justify-content: center;
     align-items: flex-start;
 }
+/*Partie Photos*/
+.sectiondesign{
+     margin: 0 100px;
+     padding: 0 30px;
+}
 
+.trie{
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.trie p{
+    margin: 0;
+}
+.trie select{
+    background-color: #901C1C;
+    color: white;
+    border: none;
+    padding: 1em;
+}
+.trie select option{
+    border: 1px solid white;
+}
+
+/*Media*/
+.sectionphotos {
+     margin: 0 100px;
+     padding: 0 30px;
+}
+.sectionphotos img , .sectionphotos video{
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/**/
 .contact_button {
     font-size: 20px;
     font-weight: bold;

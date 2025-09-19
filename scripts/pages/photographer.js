@@ -1,31 +1,35 @@
 //Mettre le code JavaScript lié à la page photographer.html
+import { PageTemplate, MediaTemplate } from "../templates/pagePhotographer.js";
 
-   import pagephotographerTemplate from "../templates/pagePhotographer.js";
-
-   async function getPagePhotographers() {
-            // On va chercher le JSON
+async function getPagePhotographers() {
     const response = await fetch("data/photographers.json");
     const data = await response.json();
-     // On retourne uniquement le tableau des photographes
     return { photographers: data.photographers };
+}
 
+async function displayData(photographer, media) {
+    // --- Header + tri + section photos ---
+    const pagePhotographerModel = PageTemplate(photographer);
+    pagePhotographerModel.getPageHeaderDOM();
 
-    }
+    // --- Ajouter les images ---
+    const photographerFirstName = photographer.name.split(" ")[0];
+    MediaTemplate(media, photographerFirstName);
+}
 
-    async function displayData(photographers) {
-        const photographHeader = document.querySelector(".photograph-header");
+async function init() {
+    const { photographers } = await getPagePhotographers();
+    const urlParams = new URLSearchParams(window.location.search);
+    const photographerId = parseInt(urlParams.get('id'), 10);
 
-        photographers.forEach((photographer) => {
-            const pagePhotographerModel = pagephotographerTemplate(photographer);
-            const pageUserDOM = pagePhotographerModel.getPageHeaderDOM();
-            photographHeader.appendChild(pageUserDOM);
-        });
-    }
+    const photographer = photographers.find(p => p.id === photographerId);
 
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPagePhotographers();
-        displayData(photographers);
-    }
-    
-    init();
+    // Récupérer les médias associés
+    const response = await fetch("data/photographers.json");
+    const data = await response.json();
+    const media = data.media.filter(m => m.photographerId === photographerId);
+
+    displayData(photographer, media);
+}
+
+init();
