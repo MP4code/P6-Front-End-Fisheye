@@ -13,15 +13,17 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button">Contactez-moi</button>
       </div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
+          <div class="content_header">
           <h2>Contactez-moi</h2>
           <h3 id="photographer_name"></h3>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          </div>
+          <img src="assets/icons/close.svg" alt="fermer la modal" />
         </header>
 				<form>
 					<div>
@@ -30,16 +32,15 @@
             <label for="last_name">Nom</label>
 						<input id="last_name" />
             <label for="email">Email</label>
-            <input id="email" />
+            <input id="email" type="email" />
             <label for="message">Votre message</label>
             <textarea id="message"></textarea>
-
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
     <script  type="module" src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script type="module" src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

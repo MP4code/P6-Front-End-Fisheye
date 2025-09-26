@@ -59,18 +59,72 @@
 
 /*Media*/
 .sectionphotos {
-     margin: 0 100px;
-     padding: 0 30px;
+    margin: 0 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px 100px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 .sectionphotos img , .sectionphotos video{
-    width: 350px;
-    height: 250px;
+    width: 100%;
+    height: 450px;
     object-fit: cover;
     border-radius: 5px;
     cursor: pointer;
 }
 
-/**/
+.infoDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    color: #901C1C;
+    font-weight: 400;
+    font-size: 24px;
+}
+.likesDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.likesDiv img {
+    margin: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/*Encadré - Informations likes et prix*/
+.infolikesprice{
+    position: fixed;
+    width: 320px;
+    bottom: 0;
+    right: 5%;
+    background-color: #DB8876;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    z-index: 1000;
+    color: black;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 5px 20px;
+}
+.boxLikes {
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+.boxLikes p {
+    margin: 0; 
+}
+
+
+/*Contact Modal*/
+
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -85,6 +139,12 @@
 }
 
 .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -97,8 +157,14 @@
 }
 
 .modal header {
+    padding: 20px;
     justify-content: space-between;
-    width: 100%;
+    width: 100%;   
+}
+.content_header{
+    margin: 15px 0 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal header img {
@@ -108,7 +174,12 @@
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    margin: 0;
+}
+#photographer_name{
+    font-size: 64px;
+    font-weight: normal;
+    margin: 0;
 }
 
 form {
@@ -116,6 +187,7 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    padding: 20px;
 }
 
 form label {
