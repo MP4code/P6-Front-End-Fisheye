@@ -1,22 +1,34 @@
-const modal = document.getElementById("contact_modal");
-const openBtn = document.querySelector(".photograph-header .contact_button");
-const closeBtn = modal.querySelector("img"); 
-
-
-openBtn.addEventListener("click", () => {
+ export function displayModal() {
+    const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
-});
+}
 
-closeBtn.addEventListener("click", () => {
+export function closeModal() {
+    const modal = document.getElementsByClassName("close-button");
     modal.style.display = "none";
-});
+}
 
-window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }   
-});
+export function setupModal() {
+    const modal = document.getElementById("contact_modal");
+    if (!modal) return;
 
+    const closeButton = modal.querySelector(".close-button"); 
+    if (closeButton) {
+        closeButton.addEventListener("click", closeModal);
+    }
+
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+    });
+}
+
+
+
+/*
 // Gestion du formulaire
 const form = modal.querySelector("form");
 form.addEventListener("submit", (event) => {
@@ -27,4 +39,4 @@ form.addEventListener("submit", (event) => {
     const message = document.getElementById("message");
     console.log("Prénom: "+first_name.value, "Nom: "+last_name.value, "e-mail: "+email.value, "message: "+message.value);
 }
-); 
+); */

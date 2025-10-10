@@ -1,5 +1,5 @@
 
-function PageTemplate(data) {
+/*function PageTemplate(data) {
     const { name, portrait, city, country, tagline } = data;
     const picture = `assets/photographers/Photographers ID Photos/${portrait}`;
     
@@ -90,8 +90,9 @@ function MediaTemplate(mediaArray,photographerFirstName) {
 
 
     mediaArray.forEach(media => {
-
-        // Somme des likes
+        const mediaItem = mediaFactory(media);
+        const mediaHTML = mediaItem.createHTML();   
+        /* Somme des likes
         likesSum += media.likes;
         
         // Conteneur média
@@ -148,4 +149,4 @@ function MediaTemplate(mediaArray,photographerFirstName) {
 
 }
 
-export { PageTemplate, MediaTemplate };
+export { PageTemplate, MediaTemplate };*/

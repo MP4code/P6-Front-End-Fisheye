@@ -1,35 +1,56 @@
-//Mettre le code JavaScript lié à la page photographer.html
-import { PageTemplate, MediaTemplate } from "../templates/pagePhotographer.js";
-
-async function getPagePhotographers() {
-    const response = await fetch("data/photographers.json");
-    const data = await response.json();
-    return { photographers: data.photographers };
-}
-
-async function displayData(photographer, media) {
-    // --- Header + tri + section photos ---
-    const pagePhotographerModel = PageTemplate(photographer);
-    pagePhotographerModel.getPageHeaderDOM();
-
-    // --- Ajouter les images ---
-    const photographerFirstName = photographer.name.split(" ")[0];
-    MediaTemplate(media, photographerFirstName);
-}
+//Mettre le code JavaScript lié à la page photographer.html 
+// lié au template Photographer.js et mediaFactory.js
+import { PhotographerFactory } from "../templates/photographer.js";
+import { mediaFactory } from "../templates/mediaFactory.js";
+import { likesFactory} from "../templates/likesFactory.js";
+import { setupModal, displayModal } from "../utils/contactForm.js";
 
 async function init() {
-    const { photographers } = await getPagePhotographers();
-    const urlParams = new URLSearchParams(window.location.search);
-    const photographerId = parseInt(urlParams.get('id'), 10);
-
-    const photographer = photographers.find(p => p.id === photographerId);
-
-    // Récupérer les médias associés
     const response = await fetch("data/photographers.json");
     const data = await response.json();
-    const media = data.media.filter(m => m.photographerId === photographerId);
 
-    displayData(photographer, media);
+    const urlParams = new URLSearchParams(window.location.search);
+    const photographerId = parseInt(urlParams.get("id"), 10);
+
+    const photographerData = data.photographers.find(p => p.id === photographerId);
+    if (!photographerData) return;
+
+    const photographerFirstName = photographerData.name.split(' ')[0];
+
+    const mediaArray = data.media.filter(m => m.photographerId === photographerId);
+
+    const photographer = PhotographerFactory.createPhotographer(photographerData);
+
+     // --- Injecte le header dans le div déjà existant ---
+    const headerDiv = document.querySelector(".photograph-header");
+    headerDiv.innerHTML = photographer.createHeaderHTML();
+    
+    // Configuration du modal
+    setupModal();
+
+    const contactButton = document.querySelector(".contact_button");
+    contactButton.addEventListener("click", displayModal);
+      // --- Section tri et section photos ---
+    document.querySelector("main").insertAdjacentHTML("beforeend", photographer.createPageHTML());
+
+    // --- Injecte les médias dans la section photos ---
+    const sectionPhotos = document.querySelector(".sectionphotos");
+    mediaArray.forEach(mediaData => {
+        const media = new mediaFactory(mediaData); // crée ImageMedia ou VideoMedia
+        sectionPhotos.insertAdjacentHTML("beforeend", media.createHTML(photographerFirstName));
+
+    });
+    // Calcule et affiche le total des likes
+    const totalLikesContainer = document.getElementById("totalLikes");
+    const totalLikes = mediaArray.reduce((sum, media) => sum + media.likes, 0);
+    totalLikesContainer.textContent = totalLikes;
+
+    // Active les clics sur tous les médias
+    document.querySelectorAll(".mediaContainer").forEach(container => {
+        likesFactory.activateLikes(container, totalLikesContainer);
+    });
+    // Lightbox 
+
 }
 
 init();

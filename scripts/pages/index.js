@@ -1,4 +1,7 @@
-   import photographerTemplate from "../templates/photographer.js";
+   // La page d'accueil des photographes
+   // ce fichier est lié à photographers.js et index.html
+
+  import { PhotographerFactory } from "../templates/photographer.js";
 
    async function getPhotographers() {
             // On va chercher le JSON
@@ -7,16 +10,17 @@
      // On retourne uniquement le tableau des photographes
     return { photographers: data.photographers };
 
-
     }
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerTemplate(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
+        photographers.forEach((data) => {
+           const photographer = PhotographerFactory.createPhotographer(data);
+           // On génère le HTML avec la méthode createHTML()
+           const photographerCard = photographer.createHTML();
+           // On l'injecte dans la page avec insertAdjacentHTML
+           photographersSection.insertAdjacentHTML("beforeend", photographerCard);
         });
     }
 
