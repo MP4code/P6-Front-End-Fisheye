@@ -3,7 +3,8 @@
 import { PhotographerFactory } from "../templates/photographer.js";
 import { mediaFactory } from "../templates/mediaFactory.js";
 import { likesFactory} from "../templates/likesFactory.js";
-import { setupModal, displayModal } from "../utils/contactForm.js";
+import { setupModal, displayModal, closeModal } from "../utils/contactForm.js";
+import { lightboxModal} from "../templates/lightbox.js";
 
 async function init() {
     const response = await fetch("data/photographers.json");
@@ -30,6 +31,14 @@ async function init() {
 
     const contactButton = document.querySelector(".contact_button");
     contactButton.addEventListener("click", displayModal);
+    const closeButton = document.querySelector(".close-button");
+    if (closeButton) {
+    closeButton.addEventListener("click", closeModal);
+    }
+    // Prénom du photographe dans le modal
+    const photographerNameInModal = document.getElementById("photographer_name");
+    photographerNameInModal.textContent = photographerData.name;
+
       // --- Section tri et section photos ---
     document.querySelector("main").insertAdjacentHTML("beforeend", photographer.createPageHTML());
 
@@ -49,7 +58,8 @@ async function init() {
     document.querySelectorAll(".mediaContainer").forEach(container => {
         likesFactory.activateLikes(container, totalLikesContainer);
     });
-    // Lightbox 
+    // Lightbox
+    lightboxModal();
 
 }
 
