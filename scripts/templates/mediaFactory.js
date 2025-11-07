@@ -23,6 +23,7 @@ class ImageMedia {
 
     createHTML(photographerFirstName){
         const likesTemplate = new likesFactory(this.likes).createHTML();
+        console.log(likesTemplate);
         return `<div class="mediaContainer">
             <a href="#" class="lightbox" aria-label="lightbox de ${photographerFirstName}">
                 <img src="assets/images/Sample Photos/${photographerFirstName}/${this.image}" alt="${this.title}">
@@ -46,7 +47,7 @@ class VideoMedia {
         return `<div class="mediaContainer">
             <a href="#" class="lightbox" aria-label="lightbox de ${photographerFirstName}">
                 <video controls>
-                    <source src="assets/images/Sample Photos/${photographerFirstName}/${this.video}" type="video/mp4">
+                    <source src="assets/images/Sample Photos/${photographerFirstName}/${this.video}" type="video/mp4" aria-label="${this.title}">
                     Your browser does not support the video tag.
                 </video>
             </a>

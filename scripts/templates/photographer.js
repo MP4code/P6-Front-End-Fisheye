@@ -52,7 +52,7 @@ class Photographer {
         <section class="sectiondesign">
             <div class="trie">
                 <p>Trier par</p>
-                <select>
+                <select id="sort-select" aria-label="Trier par">
                     <option value="popularité">Popularité</option>
                     <option value="date">Date</option>
                     <option value="titre">Titre</option>

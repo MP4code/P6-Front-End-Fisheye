@@ -64,3 +64,8 @@ h1 {
     object-fit: cover;
     cursor: pointer;
 }
+
+:focus {
+    outline: 2px solid #901C1C;
+    outline-offset: 2px;
+}
