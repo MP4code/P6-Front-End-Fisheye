@@ -26,10 +26,10 @@ class Photographer {
         <article aria-label="Voir la fiche de ${this.name}">
             <a href="photographer.html?id=${this.id}" aria-label="Voir la fiche de ${this.name}">
                 <img src="${this.picture}" alt="${this.name}">
-                <h2>${this.name}</h2>
-                <p>${this.city}, ${this.country}</p>
-                <p>${this.tagline}</p>
-                <p>${this.price}€/jour</p>
+                <h2 aria-label="${this.name}">${this.name}</h2>
+                <p aria-label="${this.city}, ${this.country}" tabindex="0">${this.city}, ${this.country}</p>
+                <p aria-label="${this.tagline}" tabindex="0">${this.tagline}</p>
+                <p aria-label="${this.price} euros par jour" tabindex="0">${this.price}€/jour</p>
             </a>
         </article>`;
     }
@@ -37,9 +37,9 @@ class Photographer {
      createHeaderHTML() {
         return `
         <div class="informations" aria-label="Informations">
-            <h1>${this.name}</h1>
-            <p>${this.city}, ${this.country}</p>
-            <p>${this.tagline}</p>
+            <h1 aria-label="${this.name}" tabindex="0">${this.name}</h1>
+            <p aria-label="${this.city}, ${this.country}" tabindex="0">${this.city}, ${this.country}</p>
+            <p aria-label="${this.tagline}" tabindex="0">${this.tagline}</p>
         </div>
         <button class="contact_button" aria-label="Contactez-moi">Contactez-moi</button>
         <img src="${this.picture}" alt="${this.name}">`;
@@ -62,13 +62,13 @@ class Photographer {
 
         <section class="sectionphotos" aria-label="section photos"></section>
 
-        <aside class="infolikesprice" aria-label="informations likes et prix">
+        <aside class="infolikesprice" aria-label="informations likes et prix" tabindex="0">
             <div class="boxLikes" aria-label="Total des likes">
-                <p id="totalLikes"></p>
+                <p id="totalLikes" aria-label="Total: ${this.totalLikes} likes" tabindex="0"></p>
                 <img src="assets/icons/heart-black.png" alt="icon likes">
             </div>
             <div class="priceContainer">
-                <p>${this.price}€/jour</p>
+                <p aria-label="Prix ${this.price} euros par jour" tabindex="0">${this.price}€/jour</p>
             </div>
         </aside>`;
     }

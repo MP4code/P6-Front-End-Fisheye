@@ -19,6 +19,7 @@ export class likesFactory{
         const likesP = mediaContainer.querySelector(".likes-count");
 
         heart.addEventListener("click", () => {
+               
             // Incrément local
             let likes = parseInt(likesP.textContent, 10);
             likes++;
@@ -28,6 +29,15 @@ export class likesFactory{
             if (totalLikes) {
                 const currentTotal = parseInt(totalLikes.textContent, 10);
                 totalLikes.textContent = currentTotal + 1;
+            }
+        });
+
+        // Permettre l'activation au clavier
+        heart.setAttribute("tabindex", "0");
+        heart.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                heart.click();
             }
         });
     }

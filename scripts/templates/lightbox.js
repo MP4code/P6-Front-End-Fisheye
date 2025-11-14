@@ -10,14 +10,20 @@ export function lightboxModal() {
     // Tableau des médias (images + vidéos)
     const mediaArray = Array.from(lightboxLinks).map(link => {
         const media = link.querySelector("img, video");
-        const title = media.getAttribute("aria-label") || media.alt || media.getAttribute("title") || "";
+        const title =  media.getAttribute("aria-label") ||
+        media.getAttribute("title") ||
+        media.alt ||
+        link.getAttribute("title") ||
+        "";
         const src = media.src;
         const alt = media.alt || media.getAttribute("title") || "";
         const isVideo = media.tagName.toLowerCase() === "video";
+        console.log({ title});
         return { src, alt, isVideo, title };
     });
 
-    let currentIndex = 0;
+    // media.getAttribute("aria-label") || media.title || media.alt ||media.getAttribute("title") || "";
+    let currentIndex = 0;          
 
     // --- OUVERTURE DE LA LIGHTBOX ---
     document.addEventListener("click", function (event) {
@@ -32,7 +38,6 @@ export function lightboxModal() {
     // --- AFFICHER LA LIGHTBOX ---
     function openLightbox() {
         const { src, alt, isVideo, title } = mediaArray[currentIndex];
-
         // Si c’est une vidéo, on affiche une balise <video>
         const mediaHTML = isVideo
             ? `<video class="lightbox_video" controls autoplay>

@@ -34,7 +34,6 @@ async function init() {
   setupModal();
 
   const contactButton = document.querySelector(".contact_button");
-  KeyboardEvent.key === "Enter";
   contactButton.addEventListener("click", displayModal);
   const closeButton = document.querySelector(".close-button");
   if (closeButton) {
@@ -71,14 +70,19 @@ async function init() {
         media.createHTML(photographerFirstName)
       );
     });
-    
   }
 
   // Affiche les médias au chargement
   displayMedias(mediaArray);
+  // Navigation clavier pour le select
+  sortSelect.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      // Exécute le tri quand Enter est pressé
+      sortSelect.dispatchEvent(new Event("change"));
+    }
+  });
 
   // Écoute le changement dans le select
-  KeyboardEvent.key === "Enter";
   sortSelect.addEventListener("change", (e) => {
     let sortedArray = [...mediaArray];
 

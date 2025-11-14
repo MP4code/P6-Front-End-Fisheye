@@ -1,7 +1,7 @@
    // La page d'accueil des photographes
    // ce fichier est lié à photographers.js et index.html
 
-  import { PhotographerFactory } from "../templates/photographer.js";
+import { PhotographerFactory } from "../templates/photographer.js";
 
    async function getPhotographers() {
             // On va chercher le JSON
@@ -11,6 +11,7 @@
     return { photographers: data.photographers };
 
     }
+    
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
@@ -32,3 +33,4 @@
     
     init();
     
+            

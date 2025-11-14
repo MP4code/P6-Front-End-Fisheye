@@ -23,14 +23,13 @@ class ImageMedia {
 
     createHTML(photographerFirstName){
         const likesTemplate = new likesFactory(this.likes).createHTML();
-        console.log(likesTemplate);
         return `<div class="mediaContainer">
             <a href="#" class="lightbox" aria-label="lightbox de ${photographerFirstName}">
                 <img src="assets/images/Sample Photos/${photographerFirstName}/${this.image}" alt="${this.title}">
             </a>
-            <div class="infoDiv" aria-label="informations">
-                <p>${this.title}</p>
-                <p>${likesTemplate}</p>
+            <div class="infoDiv" aria-label="${this.title}, ${this.likes} likes">
+                <p tabindex="0">${this.title}</p>
+                <div class="likesDiv" tabindex="0">${likesTemplate}</div>
             </div>
         </div>`;
     }
@@ -46,14 +45,14 @@ class VideoMedia {
         const likesTemplate = new likesFactory(this.likes).createHTML();
         return `<div class="mediaContainer">
             <a href="#" class="lightbox" aria-label="lightbox de ${photographerFirstName}">
-                <video controls>
-                    <source src="assets/images/Sample Photos/${photographerFirstName}/${this.video}" type="video/mp4" aria-label="${this.title}">
+                <video controls aria-label="${this.title}">
+                    <source src="assets/images/Sample Photos/${photographerFirstName}/${this.video}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </a>
-            <div class="infoDiv" aria-label="informations">
-                <p>${this.title}</p>
-                <p>${likesTemplate}</p>
+            <div class="infoDiv" aria-label="${this.title}, ${this.likes} likes">
+                <p tabindex="0">${this.title}</p>
+                <div class="likesDiv" tabindex="0">${likesTemplate}</div>
             </div>
         </div>`;
     }
