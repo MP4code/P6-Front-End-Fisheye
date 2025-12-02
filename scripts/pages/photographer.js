@@ -9,7 +9,6 @@ import { lightboxModal } from "../templates/lightbox.js";
 async function init() {
   const response = await fetch("data/photographers.json");
   const data = await response.json();
-
   const urlParams = new URLSearchParams(window.location.search);
   const photographerId = parseInt(urlParams.get("id"), 10);
 
@@ -103,6 +102,8 @@ async function init() {
     document.querySelectorAll(".mediaContainer").forEach((container) => {
       likesFactory.activateLikes(container, totalLikesContainer);
     });
+    // reactive la lightbox après le tri
+    lightboxModal();
   });
 
   // Calcule et affiche le total des likes

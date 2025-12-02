@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="fisheye logo"/></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -25,12 +25,12 @@
           </div>
           <img src="assets/icons/close.svg" alt="fermer la modal" class="close-button" />
         </header>
-				<form>
-					<label for="first">Prénom</label>
-            <input type="text" id="first" name="first" />
+				<form aria-label="formulaire de contact">
+					<label for="first_name">Prénom</label>
+            <input type="text" id="first_name" name="first_name" />
             
-            <label for="last">Nom</label>
-            <input type="text" id="last" name="last" />
+            <label for="last_name">Nom</label>
+            <input type="text" id="last_name" name="last_name" />
             
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" />

@@ -1,0 +1,26 @@
+{
+  "name": "p6-front-end-fisheye",
+  "version": "1.0.0",
+  "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --ext .js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MP4code/P6-Front-End-Fisheye.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MP4code/P6-Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/MP4code/P6-Front-End-Fisheye#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0"
+  }
+}

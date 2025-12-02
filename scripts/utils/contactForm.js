@@ -28,8 +28,8 @@ export function setupModal() {
             closeModal();
         }
     });
+    
 }
-
 
 
 // Gestion du formulaire
@@ -43,3 +43,5 @@ form.addEventListener("submit", (event) => {
     console.log("Prénom: "+first_name.value, "Nom: "+last_name.value, "e-mail: "+email.value, "message: "+message.value);
 }
 ); 
+
+

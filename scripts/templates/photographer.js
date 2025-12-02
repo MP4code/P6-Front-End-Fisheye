@@ -25,8 +25,8 @@ class Photographer {
         return `
         <article aria-label="Voir la fiche de ${this.name}">
             <a href="photographer.html?id=${this.id}" aria-label="Voir la fiche de ${this.name}">
-                <img src="${this.picture}" alt="${this.name}">
-                <h2 aria-label="${this.name}">${this.name}</h2>
+                <img src="${this.picture}" alt="${this.name}" tabindex="0"/>
+                <h2 aria-label="${this.name}" tabindex="0">${this.name}</h2>
                 <p aria-label="${this.city}, ${this.country}" tabindex="0">${this.city}, ${this.country}</p>
                 <p aria-label="${this.tagline}" tabindex="0">${this.tagline}</p>
                 <p aria-label="${this.price} euros par jour" tabindex="0">${this.price}€/jour</p>

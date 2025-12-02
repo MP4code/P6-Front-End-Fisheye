@@ -18,7 +18,6 @@ export function lightboxModal() {
         const src = media.src;
         const alt = media.alt || media.getAttribute("title") || "";
         const isVideo = media.tagName.toLowerCase() === "video";
-        console.log({ title});
         return { src, alt, isVideo, title };
     });
 
