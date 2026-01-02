@@ -13,12 +13,12 @@
     padding: 0 30px;
 }
 .photograph-header h1 {
-    color: #D3573C;
+    color: #901C1C;
     font-size: 3em;
 }
 .photograph-header p:nth-of-type(1){
     font-size: 1.5em;
-    color: #D3573C;
+    color: #901C1C;
 }
 .photograph-header img{
     width: 200px;

@@ -15,9 +15,12 @@ export function lightboxModal() {
         media.alt ||
         link.getAttribute("title") ||
         "";
-        const src = media.src;
         const alt = media.alt || media.getAttribute("title") || "";
         const isVideo = media.tagName.toLowerCase() === "video";
+         const src = isVideo
+    ? media.querySelector("source").getAttribute("src")
+    : media.getAttribute("src");
+
         return { src, alt, isVideo, title };
     });
 
